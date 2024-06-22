@@ -1,18 +1,20 @@
--- if true then
---   return {}
--- end
---
 return {
 	-- change some telescope options and a keymap to browse plugin files
 	{ "ellisonleao/gruvbox.nvim" },
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
+	{
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
+	},
 
 	{ "tpope/vim-surround" },
 
-	-- Configure LazyVim to load gruvbox
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "gruvbox",
+			colorscheme = "catppuccin-mocha",
 		},
 	},
 	{
@@ -33,6 +35,10 @@ return {
 				layout_config = { prompt_position = "top" },
 				sorting_strategy = "ascending",
 				winblend = 0,
+				path_display = function(opts, path)
+					local tail = require("telescope.utils").path_tail(path)
+					return string.format("%s (%s)", tail, path)
+				end,
 			},
 		},
 	},
@@ -47,13 +53,5 @@ return {
 				require("telescope").load_extension("fzf")
 			end,
 		},
-	},
-
-	{
-		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
-		opts = function(_, opts)
-			table.insert(opts.sections.lualine_x, "😄")
-		end,
 	},
 }
