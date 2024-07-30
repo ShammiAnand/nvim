@@ -30,7 +30,7 @@ return {
 			},
 		},
 		inlay_hints = {
-			enabled = true,
+			enabled = false,
 		},
 		codelens = {
 			enabled = false,
@@ -84,10 +84,10 @@ return {
 		end
 
 		-- inlay hints
-		if opts.inlay_hints.enabled then
+		if opts.inlay_hints.enabled and vim.lsp.inlay_hint then
 			Util.lsp.on_attach(function(client, buffer)
 				if client.supports_method("textDocument/inlayHint") then
-					Util.toggle.inlay_hints(buffer, true)
+					vim.lsp.inlay_hint.enable(buffer, true)
 				end
 			end)
 		end
