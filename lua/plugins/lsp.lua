@@ -61,7 +61,7 @@ return {
 		-- Setup capabilities for nvim-cmp
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-		opts.capabilities = vim.tbl_deep_extend("force", opts.capabilities or {}, capabilities)
+		-- opts.capabilities = vim.tbl_deep_extend("force", opts.capabilities or {}, capabilities)
 
 		-- Rest of your existing configuration...
 		if Util.has("neoconf.nvim") then
@@ -84,13 +84,13 @@ return {
 		end
 
 		-- inlay hints
-		if opts.inlay_hints.enabled and vim.lsp.inlay_hint then
-			Util.lsp.on_attach(function(client, buffer)
-				if client.supports_method("textDocument/inlayHint") then
-					vim.lsp.inlay_hint.enable(buffer, true)
-				end
-			end)
-		end
+		-- if opts.inlay_hints.enabled and vim.lsp.inlay_hint then
+		-- 	Util.lsp.on_attach(function(client, buffer)
+		-- 		if client.supports_method("textDocument/inlayHint") then
+		-- 			vim.lsp.inlay_hint.enable(buffer, true)
+		-- 		end
+		-- 	end)
+		-- end
 
 		-- configure diagnostic settings
 		vim.diagnostic.config(vim.deepcopy(opts.diagnostics))

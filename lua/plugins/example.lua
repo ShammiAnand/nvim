@@ -1,8 +1,7 @@
 return {
-	-- change some telescope options and a keymap to browse plugin files
 	{ "oxfist/night-owl.nvim", name = "night-owl", priority = 2001 },
-	{ "ellisonleao/gruvbox.nvim" },
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "ellisonleao/gruvbox.nvim" },
 
 	{
 		"williamboman/mason.nvim",
@@ -12,12 +11,6 @@ return {
 
 	{ "tpope/vim-surround" },
 
-	-- {
-	-- 	"LazyVim/LazyVim",
-	-- 	opts = {
-	-- 		colorscheme = "catppuccin-mocha",
-	-- 	},
-	-- },
 	{
 		"nvim-telescope/telescope.nvim",
 		keys = {
